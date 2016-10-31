@@ -38,16 +38,16 @@
 			</span>
 					<div class="answer">
 						<ul class="list-group">
-							<li ng-repeat="friend in component.friends track by $index">{{friend}}</li>
+							<li ng-repeat="friend in $ctrl.friends track by $index">{{friend}}</li>
 						</ul>
 					</div>
 				</li>
 				<li class="list-group-item">
-					<span class="challenge">Write a function called addFriend that will take the input from ng-model="component.newFriend" If done correctly you should see your new friend pop up on the list above once you click submit</span>
+					<span class="challenge">Write a function called addFriend that will take the input from ng-model="$ctrl.newFriend" If done correctly you should see your new friend pop up on the list above once you click submit</span>
 					<div class="answer">
 						<ul class="list-group" style="width: 50%">
-							<input ng-model="component.newFriend" />
-							<button ng-click="component.addFriend()">Add Friend</button>
+							<input ng-model="$ctrl.newFriend" />
+							<button ng-click="$ctrl.addFriends($ctrl.newFriend)">Add Friend</button>
 							<p><small>Don't forget to clear the input box when you add a friend</small></p>
 						</ul>
 					</div>

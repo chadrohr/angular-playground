@@ -2,6 +2,7 @@
   angular.module('angularPlayground')
 
     .component('cartComponent', {
+      controllerAs: 'component',
       controller: CartController,
       templateUrl: '/app/components/cart/cart.html'
     })
