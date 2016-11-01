@@ -21,6 +21,7 @@
 
     this.getCartCount = function () {
       // return the length of our cart
+      return this.cart.length;
     }
 
     /*
@@ -29,11 +30,29 @@
     * this function should return the total cost
     * of each item that is in our cart
     */
+    this.calculateCartTotal = function() {
+      var total = 0;
+      this.cart.forEach(function runningTotal(item) {
+        total += item.price * item.quantity;
+      })
+      return total;
+    }
 
 
-    this.removeItemFromCart = function (item) {
       // Item gets passed in from our view when the user clicks the x button
-
+    var alias = this;
+    this.removeItemFromCart = function (unwantedItem) {
+      // Item gets passed in from our view when the user clicks the x button
+      console.log(unwantedItem);
+      console.log(alias.cart);
+      for (var i=0; i<alias.cart.length; i++) {
+        var item = alias.cart[i];
+        console.log(item);
+        if (item.$$hashKey == unwantedItem.$$hashKey) {
+          alias.cart.splice(i, 1);
+          return;
+        }
+      }
       /*
       * This function should be able to remove the passed in item
       * from our cart. You will have to first identify where the passed
@@ -44,7 +63,18 @@
 
     this.addItemToCart = function (item) {
       // item gets passed in to this function from the view
+  var newItem = {
+        name: item.name,
+        color: item.selectedColor,
+        size: item.selectedSize,
+        quantity: 1,
+        price: item.price,
+        $$hashKey: item.$$hashKey
+      };
 
+      console.log(newItem);
+
+      this.cart.push(newItem);
       /*
       *Our cart demands that items being added to it must have the following properties
       *var newItem = {
